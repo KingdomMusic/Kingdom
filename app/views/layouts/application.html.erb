@@ -4,12 +4,26 @@
     <title>Kingdom</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=Bangers rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header id="header">
+      <div class="header-content clearfix">
+        <div class="header-left">
+          <h1 class="header-logo">Kingdom</h1>
+        </div>
+        <div class="header-right">
+          <nav class="nav-content">
+            <ul class="nav-list">
+              <li class="nav-item">TOP</li>
+              <li class="nav-item">Sign in</li>
+            </ul>
+          </nav>
+        </div>
+    </header>
     <%= yield %>
   </body>
 </html>
