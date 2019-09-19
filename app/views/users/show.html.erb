@@ -1,2 +1,46 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>マイページ</h1>
+
+<p>プロフィール画像</p>
+
+<%= form_for @user do |f| %>
+<div class="field">
+  <%= f.label "性(漢字)" %><br />
+  <%= f.text_field :last_name_characters, readonly: true %>
+</div>
+
+<div class="field">
+  <%= f.label "名(漢字)" %><br />
+  <%= f.text_field :first_name_characters, readonly: true %>
+</div>
+
+<div class="field">
+  <%= f.label "性(カナ)" %><br />
+  <%= f.text_field :last_name_kana, readonly: true %>
+</div>
+
+<div class="field">
+  <%= f.label "名(カナ)" %><br />
+  <%= f.text_field :first_name_kana, readonly: true %>
+</div>
+
+<div class="field">
+  <%= f.label "メールアドレス" %><br />
+  <%= f.email_field :email, readonly: true %>
+</div>
+
+<div class="field">
+  <%= f.label "郵便番号" %><br />
+  <%= f.text_field :postal_code, readonly: true %>
+</div>
+
+<div class="field">
+  <%= f.label "住所" %><br />
+  <%= f.text_field :address, readonly: true %>
+</div>
+
+<div class="field">
+  <%= f.label "電話番号" %><br />
+  <%= f.text_field :phone_number, readonly: true %>
+</div>
+
+<% end %>
