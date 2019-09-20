@@ -1,3 +1,33 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.profile{
+  width: 300px
+}
+
+.profile_pic{
+  text-align: center;
+}
+
+.label1{
+  text-align: center;
+}
+.label1 p {
+  font-weight: bold
+}
+
+.info {
+    width: 100%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    // font-weight: bold;
+    color: black;/*文字色*/
+    background: rgb(25, 171, 235);
+    border: solid 1px black;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+.info p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
