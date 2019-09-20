@@ -2,45 +2,74 @@
 
 <p>プロフィール画像</p>
 
-<%= form_for @user do |f| %>
-<div class="field">
-  <%= f.label "性(漢字)" %><br />
-  <%= f.text_field :last_name_characters, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>性(漢字)</p>
+  </div>
+  <div class="info">
+    <p><%= @user.last_name_characters %></p>
+  </div>
 </div>
 
-<div class="field">
-  <%= f.label "名(漢字)" %><br />
-  <%= f.text_field :first_name_characters, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>名(漢字)</p>
+  </div>
+  <div class="info">
+    <p><%= @user.first_name_characters %></p>
+  </div>
 </div>
 
-<div class="field">
-  <%= f.label "性(カナ)" %><br />
-  <%= f.text_field :last_name_kana, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>性(カナ)</p>
+  </div>
+  <div class="info">
+    <p><%= @user.last_name_kana %></p>
+  </div>
 </div>
 
-<div class="field">
-  <%= f.label "名(カナ)" %><br />
-  <%= f.text_field :first_name_kana, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>名(カナ)</p>
+  </div>
+  <div class="info">
+    <p><%= @user.first_name_kana %></p>
+  </div>
 </div>
 
-<div class="field">
-  <%= f.label "メールアドレス" %><br />
-  <%= f.email_field :email, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>メールアドレス</p>
+  </div>
+  <div class="info">
+    <p><%= @user.email %></p>
+  </div>
 </div>
 
-<div class="field">
-  <%= f.label "郵便番号" %><br />
-  <%= f.text_field :postal_code, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>郵便番号</p>
+  </div>
+  <div class="info">
+    <p><%= @user.postal_code %></p>
+  </div>
 </div>
 
-<div class="field">
-  <%= f.label "住所" %><br />
-  <%= f.text_field :address, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>住所</p>
+  </div>
+  <div class="info">
+    <p><%= @user.address %></p>
+  </div>
 </div>
 
-<div class="field">
-  <%= f.label "電話番号" %><br />
-  <%= f.text_field :phone_number, readonly: true %>
+<div class="profile">
+  <div class="label1">
+    <p>電話番号</p>
+  </div>
+  <div class="info">
+    <p><%= @user.phone_number %></p>
+  </div>
 </div>
-
-<% end %>
