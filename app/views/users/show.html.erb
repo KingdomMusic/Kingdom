@@ -1,11 +1,13 @@
 <h1>マイページ</h1>
 
+<%= link_to 'マイページ編集', edit_user_path(@user) %>
+
 <div class="profile">
   <div class="label1">
     <p>プロフィール画像</p>
   </div>
   <div class="profile_pic">
-    <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+    <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class:"pic_shape" %>
   </div>
 </div>
 
