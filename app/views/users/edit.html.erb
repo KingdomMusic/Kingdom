@@ -9,8 +9,8 @@
     </div>
     <div class="profile_pic">
       <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class:"pic_shape" %>
+      <%= f.attachment_field :profile_image, style:"margin: 0 auto;" %>
     </div>
-        <%= f.attachment_field :profile_image %>
   </div>
 
   <div class="field">
@@ -69,17 +69,10 @@
         <%= f.text_field :phone_number, autofocus: true, class:"info" %>
   </div>
 
-  <div class="field">
-    <div class="label1">
-        <%= f.label "パスワード", for:"form_label" %>
-    </div>
-    <%= f.password_field :password, class:"info" %>
-  </div>
-</div>
-
   <div class="actions label1">
     <%= link_to "マイページへ戻る", user_path(@user), class:"btn btn-primary btn-next" %>
     <%= f.submit "マイページ更新", class:"btn btn-primary btn-next" %>
     <%= link_to "退会する", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger btn-next" %>
   </div>
+</div>
 <% end %>
