@@ -1,12 +1,18 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//マイページCSS
 .profile{
-  width: 300px
+  width: 100%;
 }
 
 .profile_pic{
   text-align: center;
+}
+
+.pic_shape{
+  border-radius: 50%;
 }
 
 .label1{
@@ -25,9 +31,15 @@
     background: rgb(25, 171, 235);
     border: solid 1px black;/*線*/
     border-radius: 10px;/*角の丸み*/
+    text-align: center;
 }
 .info p {
-    text-align: center;
     margin: 0;
     padding: 0;
+}
+
+//マイページ編集
+.btn-next{
+  display: inline-block;
+  margin-right: 100px;
 }
