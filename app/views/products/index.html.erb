@@ -1,0 +1,11 @@
+<h1>商品一覧</h1>
+
+<% @products.each do |product| %>
+<%= product.jacket_image %>
+<%= product.product_name %>
+<%= product.artist.name %>
+<%= product.price %>
+<%= product.sell_status %>
+<%= link_to "詳細", product_path(product) %>
+<%= link_to "カートに入れる", product_path(product) %>
+<% end %>
