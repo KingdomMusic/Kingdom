@@ -33,7 +33,7 @@
             <p><%= @user.encrypted_password%></p>
 
             <div class="actions label2">
-                <%= link_to "購入履歴", admin_users_path, class:"btn btn-primary btn-next" %>
+                <%= link_to "購入履歴()", admin_users_path, class:"btn btn-primary btn-next" %>
                 <%= link_to "ユーザー一覧へ戻る", admin_users_path, class:"btn btn-primary btn-next" %>
                 <%= link_to "編集", edit_admin_user_path(@user), class:"btn btn-primary btn-next" %>
             </div>
