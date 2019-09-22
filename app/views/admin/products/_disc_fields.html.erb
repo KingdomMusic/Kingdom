@@ -1,0 +1,16 @@
+<div class="nested-fields">
+	<div class="form">
+	    <h4>ディスク(数字のみ入力)</h4>
+	    <%= f.number_field :cd_count %>
+	</div>
+    <span><%= link_to_remove_association "曲を消す", f %></span>
+
+    <%= f.fields_for :songs do |f| %>
+        <%= render "song_fields", f: f %>
+    <% end %>
+
+    <label><%= link_to_add_association "歌を追加", f, :songs %></label>
+</div>
+
+
+
