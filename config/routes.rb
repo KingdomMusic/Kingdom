@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :artists, only:[:new, :index, :create, :edit, :update, :destroy]
     resources :genres, only:[:new, :index, :create, :edit, :update, :destroy]
     resources :labels, only:[:new, :index, :create, :edit, :update, :destroy]
-    get 'arrivals/new'
+    resources :arrivals, only:[:new, :create]
   end
 end
