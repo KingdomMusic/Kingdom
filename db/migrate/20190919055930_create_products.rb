@@ -18,3 +18,4 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     add_index :products, :artist
   end
 end
+

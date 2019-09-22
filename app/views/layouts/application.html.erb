@@ -24,6 +24,17 @@
           </nav>
         </div>
     </header>
-    <%= yield %>
+
+  <div class="container">
+      <div class="row">
+        <% if flash[:notice] %>
+          <div class="flash">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+          <%= yield %>
+      </div>
+  </div>
+
   </body>
 </html>

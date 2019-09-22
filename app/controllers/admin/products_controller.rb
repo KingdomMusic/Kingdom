@@ -1,6 +1,8 @@
 class Admin::ProductsController < ApplicationController
   def new
   	@product = Product.new
+  	@disc = @product.discs.build
+  	@song = @disc.songs.build
   end
 
   def create
@@ -19,6 +21,7 @@ class Admin::ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
+  	@discs = Product.find(params[:id]).discs
   end
 
   def edit
@@ -27,7 +30,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
   	@product = Product.find(params[:id])
-  	if @update.update
+  	if @product.update(product_params)
   		flash[:notice] = "商品情報を更新しました"
   		redirect_to admin_product_path(@product)
   	else
@@ -43,6 +46,8 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-  	params.require(:product).permit(:product_name,:cd_type, :artist_id, :jacket_image, :price, :label_id, :genre_id, :stock, :sell_status, :solo_at)
+  	params.require(:product).permit(:product_name,:cd_type, :artist_id, :jacket_image, :price, :label_id, :genre_id, :stock, :sell_status, :sold_at,
+  	 discs_attributes: [:id, :cd_count, :product_id, :_destroy,
+  	 songs_attributes: [:id, :song_order, :name, :disc_id, :_destroy]])
   end
 end
