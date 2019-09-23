@@ -1,7 +1,7 @@
 
 <div id="product">
-	<h1>商品一覧</h1>
-	<%= link_to "商品入荷", new_admin_arrival_path %>
+	<h1 class="product-class">商品一覧</h1>
+		<%= link_to "商品入荷", new_admin_arrival_path, class: "btn btn-primary" %>
 
 	<div class="wrapper clearfix">
 	<% @products.each do |product| %>
@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="right-index">
-				<%= link_to "詳細", admin_product_path(product) %>
+				<%= link_to "詳細", admin_product_path(product), class: "btn btn-primary" %>
 			</div>
 		</div>
 	<% end %>

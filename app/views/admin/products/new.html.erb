@@ -39,15 +39,15 @@
 		        <%= f.fields_for :discs do |f| %>
 		            <%= render "disc_fields", f: f %>
 		        <% end %>
-	            <label><%= link_to_add_association "曲を追加", f, :discs %></label>
+	            <label><%= link_to_add_association "ディスクを追加", f, :discs %></label>
 		    </div>
 
-		<h4>配送ステータス</h4>
-		<%= f.select :sell_status, [["配送準備","配送準備"],["配送中","配送中"]], { :prompt => "選択してください" , :multiple => true } %><br><br>
+		<h4>販売ステータス</h4>
+		<%= f.select :sell_status, [["在庫あり","在庫あり"],["在庫無し","在庫無し"]], { :prompt => "選択してください" , :multiple => true } %><br><br>
 
-		<%= f.submit "登録" %>
+		<%= f.submit "登録", class: "btn btn-primary" %>
 
 	<% end %>
 
-	<%= link_to "商品一覧へ戻る", admin_products_path %>
+	<%= link_to "商品一覧へ戻る", admin_products_path, class: "btn btn-primary" %>
 </div>
