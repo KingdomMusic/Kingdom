@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    
+    @product = Product.find(params[:id])
+    @discs = Product.find(params[:id]).discs
   end
 end

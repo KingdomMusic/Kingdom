@@ -1,11 +1,25 @@
-<h1>商品一覧</h1>
+<div id="product">
+	<h1>商品一覧</h1>
 
-<% @products.each do |product| %>
-<%= product.jacket_image %>
-<%= product.product_name %>
-<%= product.artist.name %>
-<%= product.price %>
-<%= product.sell_status %>
-<%= link_to "詳細", product_path(product) %>
-<%= link_to "カートに入れる", product_path(product) %>
-<% end %>
+	<div class="wrapper clearfix">
+	<% @products.each do |product| %>
+		<div class="wrapper-contents clearfix">
+			<div class="left-index">
+			<%= attachment_image_tag product, :jacket_image, :fill, 100, 100, :class => 'img-circle', fallback: "no_image.jpg" %>
+			</div>
+
+			<div class="center-index">
+					<div class="">商品名：<%= product.product_name %></div>
+					<div class="">アーティスト：<%= product.artist.name %></div>
+					<div class="">価格：<%= product.price %></div>
+					<div class="">在庫数：<%= product.stock %></div>
+			</div>
+
+			<div class="right-index">
+				<%= link_to "詳細", product_path(product) %>
+			</div>
+		</div>
+	<% end %>
+	</div>
+
+</div>
