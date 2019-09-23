@@ -27,10 +27,6 @@
 				ジャンル：<%= @product.genre.name %>
 			</div>
 
-			<div class="product-id">
-				商品ID：<%= @product.id %>
-			</div>
-
 			<div class="product-song-name">
 				<% @discs.each do |disc| %>
 					曲名：
@@ -56,15 +52,5 @@
 		<div class="right-contents"></div>
 	</div>
 
-	<%= link_to "商品一覧へ戻る", admin_products_path %>
+	<%= link_to "商品一覧へ戻る", products_path %>
 </div>
-
-
-
-
-
-
-
-
-
-

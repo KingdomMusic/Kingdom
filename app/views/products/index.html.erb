@@ -1,7 +1,5 @@
-
 <div id="product">
 	<h1>商品一覧</h1>
-	<%= link_to "商品入荷", new_admin_arrival_path %>
 
 	<div class="wrapper clearfix">
 	<% @products.each do |product| %>
@@ -11,7 +9,6 @@
 			</div>
 
 			<div class="center-index">
-					<div class="">商品ID：<%= product.id %></div>
 					<div class="">商品名：<%= product.product_name %></div>
 					<div class="">アーティスト：<%= product.artist.name %></div>
 					<div class="">価格：<%= product.price %></div>
@@ -19,7 +16,7 @@
 			</div>
 
 			<div class="right-index">
-				<%= link_to "詳細", admin_product_path(product) %>
+				<%= link_to "詳細", product_path(product) %>
 			</div>
 		</div>
 	<% end %>
