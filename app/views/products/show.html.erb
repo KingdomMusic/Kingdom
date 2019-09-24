@@ -53,4 +53,5 @@
 	</div>
 
 	<%= link_to "商品一覧へ戻る", products_path %>
+	<%= link_to "カートに入れる", cart_path, method: :post, product_id: @product.id, discs: @discs %>
 </div>

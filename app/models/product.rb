@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   has_many :discs, dependent: :destroy
   accepts_nested_attributes_for :discs, allow_destroy: true
   has_many :songs, through: :discs
+  has_many :carts, dependent: :destroy
 
   attachment :jacket_image
 

@@ -7,10 +7,12 @@ Rails.application.routes.draw do
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
+  }
 
   resources :users, only:[:show, :edit, :update, :destory]
   resources :admins
   resources :products, only:[:show, :index]
+  resources :carts, only:[:index, :create, :destroy]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
