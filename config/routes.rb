@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
+  }
 
   resources :users, only:[:show, :edit, :update, :destory]
   resources :admins
