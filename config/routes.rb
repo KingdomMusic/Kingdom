@@ -9,11 +9,13 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
+
   resources :users, only:[:show, :edit, :update, :destory]
   resources :admins
-  resources :products, only:[:show, :index]
-  resources :carts, only:[:index, :create, :destroy]
-
+  resources :products, only:[:show, :index] do
+    resources :carts, only:[:create, :destroy, :update]
+  end
+ get "/carts" => "carts#index", as:"carts"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do

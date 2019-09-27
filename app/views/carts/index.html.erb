@@ -1,3 +1,18 @@
+<h1> カート詳細 </h1>
 <% @carts.each do |cart| %>
+  <%= attachment_image_tag cart.product, :jacket_image, :fill, 80, 80, :class => 'img-circle', fallback: "no_image.jpg" %>
   <%= cart.product.product_name %>
+  <%= cart.product.artist.name %>
+  <%= cart.product.price %>
+  <%= form_for [cart.product, cart] do |f| %>
+    <%=  f.number_field :count %>
+  <%# <%= cart.count %>
+  <%# <%= link_to "変更", product_carts_path(cart), method: :patch %>
+  <%= link_to "詳細", product_path(cart.product) %>
+  <%= link_to "カートから外す", product_cart_path(product_id: cart.product.id, id: cart.id), method: :delete %>
+  <%=  f.submit "購入詳細" %>
+  <% end %>
+
+  <%# 合計金額と購入ボタン %>
+
 <% end %>
