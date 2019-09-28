@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_09_27_115251) do
 
   create_table "discs", force: :cascade do |t|
     t.integer "product_id", null: false
-    t.integer "cd_count"
+    t.integer "cd_count", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2019_09_27_115251) do
     t.integer "label_id", null: false
     t.integer "genre_id", null: false
     t.string "stock"
-    t.string "sell_status"
+    t.string "sell_status", null: false
     t.string "sold_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_09_27_115251) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "song_order"
+    t.integer "song_order", null: false
     t.string "name", null: false
     t.integer "disc_id", null: false
     t.datetime "created_at", null: false
