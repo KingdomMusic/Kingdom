@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'order_items/index'
   get 'products/index'
   get 'products/show'
   root 'users#top'
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
-
 
   resources :users, only:[:show, :edit, :update, :destory]
   resources :admins
