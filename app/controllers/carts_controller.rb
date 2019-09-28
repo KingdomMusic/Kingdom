@@ -13,7 +13,8 @@ class CartsController < ApplicationController
 
   def update
     cart = Cart.find(params[:id])
-    cart.update
+    cart.count += cart_params[:count].to_i
+    cart.save
     redirect_to carts_path
   end
 
