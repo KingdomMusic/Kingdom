@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'order_items/index'
   get 'products/index'
   get 'products/show'
   root 'users#top'
@@ -11,8 +12,10 @@ Rails.application.routes.draw do
 
   resources :users, only:[:show, :edit, :update, :destory]
   resources :admins
-  resources :products, only:[:show, :index]
-
+  resources :products, only:[:show, :index] do
+    resources :carts, only:[:create, :destroy, :update]
+  end
+ get "/carts" => "carts#index", as:"carts"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do

@@ -12,6 +12,8 @@
 					<div class="">商品名：<%= product.product_name %></div>
 					<div class="">アーティスト：<%= product.artist.name %></div>
 					<div class="">価格：<%= product.price %></div>
+					<div class="">ステータス：<%= product.sell_status %></div>
+					<%# ここでif文を使って売り切れか在庫数を表示する。 %>
 					<div class="">在庫数：<%= product.stock %></div>
 			</div>
 
