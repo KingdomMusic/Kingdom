@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'order_items/index'
   get 'products/index'
   get 'products/show'
+  get "/carts" => "carts#index", as:"carts"
+  patch "/carts/:id/change" => "carts#change", as:"cart_change"
   root 'users#top'
   devise_for :users
   devise_for :admins, controllers: {
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
   resources :products, only:[:show, :index] do
     resources :carts, only:[:create, :destroy, :update]
   end
- get "/carts" => "carts#index", as:"carts"
+  resources :order_items, only:[:index, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do

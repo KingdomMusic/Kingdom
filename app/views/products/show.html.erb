@@ -31,13 +31,13 @@
 				在庫数：<%= @product.stock %>
 			</div>
 
-		 	<% if @cart.blank? %>
+		 	<% if @cart.id.blank? %>
 		  	<%= form_for [@product, @cart] do |f| %>
 					<%=  f.number_field :count %>
 					<%=  f.submit "カートに入れる" %>
 				<% end %>
 			<% else %>
-				<%= form_for [@product, @cart] do |f| %>
+				<%= form_for [@product, @cart], url: cart_change_path(@cart), action: "patch" do |f| %>
 					<%=  f.number_field :count %>
 					<%=  f.submit "カートに入れる" %>
 				<% end %>

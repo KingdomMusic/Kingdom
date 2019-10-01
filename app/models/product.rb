@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :discs, allow_destroy: true
   has_many :songs, through: :discs
   has_many :carts, dependent: :destroy
+  has_many :order_items, dependent: :destroy
 
   attachment :jacket_image
 
@@ -28,4 +29,3 @@ class Product < ApplicationRecord
   # end
 
 end
-

@@ -11,10 +11,16 @@ class CartsController < ApplicationController
     redirect_to carts_path
    end
 
-  def update
+  def change
     cart = Cart.find(params[:id])
     cart.count += cart_params[:count].to_i
     cart.save
+    redirect_to carts_path
+  end
+
+  def update
+    cart = Cart.find(params[:id])
+    cart.update(cart_params)
     redirect_to carts_path
   end
 
