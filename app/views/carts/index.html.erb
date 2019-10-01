@@ -4,17 +4,18 @@
   <%= attachment_image_tag cart.product, :jacket_image, :fill, 80, 80, :class => 'img-circle', fallback: "no_image.jpg" %>
   <%= cart.product.product_name %>
   <%= cart.product.artist.name %>
-  <%= cart.product.price %>
+  <p> 価格:<%= cart.product.price %>円 </p>
   <% @total += cart.product.price.to_i * cart.count %>
   <%= form_for [cart.product, cart] do |f| %>
-    <%=  f.number_field :count %>
-  <%# <%= cart.count %>
-  <%# <%= link_to "変更", product_carts_path(cart), method: :patch %>
+    <%= f.number_field :count %>
+    <%= f.submit "更新" %>
+  <% end %>
+  <div>
   <%= link_to "詳細", product_path(cart.product) %>
   <%= link_to "カートから外す", product_cart_path(product_id: cart.product.id, id: cart.id), method: :delete %>
-  <%=  f.submit "購入詳細" %>
-  <% end %>
+  </div>
 <% end %>
 <div>
   <p>合計金額: <%= @total %>円</p>
+  <%= link_to "購入詳細", order_items_path, method: :post %>
 </div>
