@@ -16,4 +16,14 @@ class Product < ApplicationRecord
   # validates :stock, presence:true
   validates :sell_status, presence:true
 
+  def product_stock
+    arrivals_count = self.arrivals.each do |arrrival|
+      arrival.arraival_count
+    end
+
+    buy = Product.order_items.count
+
+    @stock = arrival_count - buy
+  end
+
 end
