@@ -22,6 +22,7 @@ class Admin::ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id])
   	@discs = Product.find(params[:id]).discs
+    # @stock = @product.product_stock
   end
 
   def edit

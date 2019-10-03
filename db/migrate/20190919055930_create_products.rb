@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :cd_type, :null => false
       t.references :artist, foreign_key: true, :null => false
       t.string :jacket_image_id
-      t.string :price, :null => false
+      t.integer :price, :null => false
       t.integer :label_id, foreign_key: true, :null => false
       t.integer :genre_id, foreign_key: true, :null => false
       t.string :stock, :null => false
@@ -18,4 +18,3 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     add_index :products, :artist
   end
 end
-

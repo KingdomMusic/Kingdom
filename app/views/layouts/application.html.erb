@@ -4,7 +4,7 @@
     <title>Kingdom</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link href="https://fonts.googleapis.com/css?family=Bangers rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -23,7 +23,10 @@
                 <%= link_to "マイページ", user_path(current_user), style:"color:white;" %>
               </li>
               <li class="nav-item">
-                商品一覧
+                <%= link_to "カート", carts_path, style:"color:white;" %>
+              </li>
+              <li class="nav-item">
+                 <%= link_to "商品一覧", products_path, style:"color:white;" %>
               </li>
               <li class="nav-item">
                 購入履歴
