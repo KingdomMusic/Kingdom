@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_many :songs, through: :discs
   has_many :carts, dependent: :destroy
   has_many :order_items, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   attachment :jacket_image
 

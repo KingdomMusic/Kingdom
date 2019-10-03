@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @review = @product.review
     @discs = Product.find(params[:id]).discs
     @cart = Cart.find_by(product_id: @product.id, user_id: current_user.id)
     if @cart.blank?
