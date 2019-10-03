@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :admins
   resources :products, only:[:show, :index] do
     resources :carts, only:[:create, :destroy, :update]
+    resources :orders
   end
   resources :order_items, only:[:index, :create]
 
