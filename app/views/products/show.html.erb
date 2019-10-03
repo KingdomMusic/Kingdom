@@ -62,7 +62,29 @@
 		</div>
 
 
-		<div class="right-contents"></div>
+		<div class="right-contents">
+			<h2>レビュー</h2>
+			<%= link_to "レビューを書く", new_review_path %>
+
+				<table>
+					<tr>
+						<th>画像</th>
+						<th>レビュー</th>
+						<th></th>
+					</tr>
+
+					<% @product.reviews.each do |review| %>
+					<tr>
+						<th></th>
+						<th><%= review.review %></th>
+						<% if review.user_id == current_user.id %>
+						<th><%= link_to "編集", edit_review_path(review) %></th>
+						<th><%= link_to "削除", review_path(review), method: :delete %> </th>
+						<% end %>
+					</tr>
+				</table>
+			<% end %>
+		</div>
 	</div>
 
 	<%= link_to "商品一覧へ戻る", products_path %>
