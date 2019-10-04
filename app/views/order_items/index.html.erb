@@ -17,3 +17,14 @@
 <p> 商品の小計: <%= @total_price %>円 </p>
 <p> 送料 </p>
 <p> 商品合計</p>
+
+<h2> 配送先指定  </h2>
+<% @destinations.each do |destination|%>
+<%= form_for (destination) do |f| %>
+<p> 宛先: <%= f.text_field :address_name %> </p>
+<p> 郵便番号: <%= f.text_field :postal_code %> </p>
+<p> 住所: <%= f.text_field :address %> </p>
+<p> 電話番号: <%= f.text_field :phone_number %> </p>
+<%= f.submit "この住所に発送する" %>
+<% end %>
+<% end %>

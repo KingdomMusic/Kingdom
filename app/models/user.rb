@@ -5,6 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :carts, dependent: :destroy
+  has_many :destinations, dependent: :destroy
 
   attachment :profile_image
+
+  def full_name(user)
+    user.first_name_characters + user.last_name_characters
+  end
+
 end
