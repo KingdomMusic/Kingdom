@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_many :songs, through: :discs
   has_many :carts, dependent: :destroy
   has_many :order_items, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   attachment :jacket_image
 
@@ -18,14 +19,14 @@ class Product < ApplicationRecord
   # validates :stock, presence:true
   validates :sell_status, presence:true
 
-  # def product_stock
-  #   arrivals_count = self.arrivals.each do |arrrival|
-  #     arrival.arraival_count
-  #   end
+  def product_stock
+    arrivals_count = self.arrivals.each do |arrrival|
+      arrival.arraival_count
+    end
 
-  #   buy = Product.order_items.count
+    buy = Product.order_items.count
 
-  #   @stock = arrival_count - buy
-  # end
+    @stock = arrival_count - buy
+  end
 
 end
