@@ -17,5 +17,6 @@
 <% end %>
 <div>
   <p>合計金額: <%= @total %>円</p>
+  <%= link_to "商品一覧に戻る", products_path%>
   <%= link_to "購入詳細", order_items_path, method: :post %>
 </div>
