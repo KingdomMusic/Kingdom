@@ -3,7 +3,7 @@ class DestinationsController < ApplicationController
   def update
     destination = Destination.find_by(user_id: current_user)
     destination.update(params_destination)
-    redirect_to order_items_path
+    redirect_to order_final_path
   end
 
   private

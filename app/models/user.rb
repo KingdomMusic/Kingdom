@@ -7,11 +7,12 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :destinations, dependent: :destroy
   has_many :review, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   attachment :profile_image
 
   def full_name(user)
-    user.first_name_characters + user.last_name_characters
+    user.last_name_characters + user.first_name_characters
   end
 
 end

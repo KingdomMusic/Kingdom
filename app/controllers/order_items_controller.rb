@@ -9,23 +9,24 @@ class OrderItemsController < ApplicationController
       @destination.address = current_user.address
       @destination.phone_number = current_user.phone_number
       @destination.save
-      @destinations = current_user.destinations
     else
-      @destinations = current_user.destinations
+      @destination = Destination.find_by(user_id: current_user.id)
     end
   end
 
   def create
     carts = current_user.carts
     carts.each do |cart|
-      order_item = OrderItem.find_by(product_id: cart.product_id)
-      if order_item.blank?
+      order_item = OrderItem.find_by(product_id: cart.product_id, order_id: 0)
+      # cart_order_items = order_items.find_all{|order_item| order_item.product_id == cart.product_id}
+      if order_item.nil? #存在しなかったら
         order_item = OrderItem.new
         order_item.product_id = cart.product_id
         order_item.count = cart.count
         order_item.price = cart.product.price
+        order_item.order_id = 0
         order_item.save
-      else
+      else  #それ以降の挙動
         order_item.count = cart.count
         order_item.price = cart.product.price
         order_item.save
@@ -36,6 +37,10 @@ class OrderItemsController < ApplicationController
 
   def destroy
 
+  end
+
+  def final
+    @destination = Destination.find_by(user_id: current_user.id)
   end
 
 

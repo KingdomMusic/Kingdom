@@ -5,11 +5,12 @@ Rails.application.routes.draw do
     get 'reviews/_index'
   end
   get 'orders/index'
-  get 'orders/done'
   get 'order_items/index'
   get 'products/index'
   get 'products/show'
   get "/carts" => "carts#index", as:"carts"
+  get "/orders/final" => "order_items#final", as:"order_final"
+  get 'orders/done' => "orders#done", as:"order_done"
   patch "/carts/:id/change" => "carts#change", as:"cart_change"
   root 'users#top'
   devise_for :users
@@ -23,11 +24,11 @@ Rails.application.routes.draw do
   resources :admins
   resources :products, only:[:show, :index] do
     resources :carts, only:[:create, :destroy, :update]
-    resources :orders
   end
   resources :order_items, only:[:index, :create]
   resources :destinations, only:[:create, :update]
   resources :reviews
+  resources :orders, only:[:create, :index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
