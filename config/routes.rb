@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'reviews/new'
-    get 'reviews/edit'
-    get 'reviews/_index'
-  end
+  #user routing
   get 'orders/index'
   get 'order_items/index'
   get 'products/index'
@@ -14,23 +10,22 @@ Rails.application.routes.draw do
   patch "/carts/:id/change" => "carts#change", as:"cart_change"
   root 'users#top'
   devise_for :users
-  devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-
   resources :users, only:[:show, :edit, :update, :destory]
-  resources :admins
   resources :products, only:[:show, :index] do
     resources :carts, only:[:create, :destroy, :update]
   end
   resources :order_items, only:[:index, :create]
   resources :destinations, only:[:create, :update]
   resources :reviews
-  resources :orders, only:[:create, :index]
+  resources :orders, only:[:create, :index, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #admin routing
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
   namespace :admin do
     resources :users
     resources :products
@@ -38,5 +33,11 @@ Rails.application.routes.draw do
     resources :genres, only:[:new, :index, :create, :edit, :update, :destroy]
     resources :labels, only:[:new, :index, :create, :edit, :update, :destroy]
     resources :arrivals, only:[:new, :create]
+    resources :orders, only:[:index, :update, :show]
+    get 'reviews/new'
+    get 'reviews/edit'
+    get 'reviews/_index'
+    get 'receive' => 'orders#receive', as:'orders_receive'
+    get 'done' => 'orders#done', as:'orders_done'
   end
 end

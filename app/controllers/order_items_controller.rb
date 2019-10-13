@@ -1,6 +1,8 @@
 require "user.rb"
 
 class OrderItemsController < ApplicationController
+before_action :check_user
+
   def index
     if current_user.destinations.blank?
       @destination = current_user.destinations.new
@@ -41,6 +43,7 @@ class OrderItemsController < ApplicationController
 
   def final
     @destination = Destination.find_by(user_id: current_user.id)
+    @order = Order.new
   end
 
 

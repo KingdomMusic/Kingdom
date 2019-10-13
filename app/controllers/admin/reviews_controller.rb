@@ -1,4 +1,6 @@
 class Admin::ReviewsController < ApplicationController
+before_action :check_admin
+
   def new
   end
 

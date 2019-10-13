@@ -1,4 +1,6 @@
 class Admin::GenresController < ApplicationController
+before_action :check_admin
+  
   def index
   	@genres = Genre.all
   end
@@ -43,4 +45,3 @@ class Admin::GenresController < ApplicationController
   end
 
 end
-

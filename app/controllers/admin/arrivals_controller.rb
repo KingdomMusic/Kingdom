@@ -1,4 +1,6 @@
 class Admin::ArrivalsController < ApplicationController
+before_action :check_admin
+  
   def new
   	@arrival = Arrival.new
   end

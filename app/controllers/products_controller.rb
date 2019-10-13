@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+before_action :check_user
 
   def index
     @products = Product.all.order(created_at: :desc)
