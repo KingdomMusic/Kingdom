@@ -67,15 +67,7 @@
                 </div>
             </div>
 
-            <div class="field">
-                <div class="label2">
-                    <%= f.label "パスワード", for:"form_label" %>
-                </div>
-                <div>
-                    <%= f.password_field :encrypted_password, autofocus: true, class:"info2" %>
-                </div>
-            </div>
-
+          
             <div class="actions label2">
                 <%= link_to "ユーザー一覧へ戻る", admin_users_path, class:"btn btn-primary btn-next" %>
                 <%= f.submit "更新",class:"btn btn-primary btn-next" %>

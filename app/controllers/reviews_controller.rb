@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-	before_action :authenticate_user!
+before_action :check_user
 
   def new
   	@review = Review.new
@@ -36,5 +36,3 @@ class ReviewsController < ApplicationController
   	params.require(:review).permit(:review, :user_id, :product_id)
   end
 end
-
-

@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+before_action :check_admin
+  
   def new
   	@product = Product.new
   	@disc = @product.discs.build

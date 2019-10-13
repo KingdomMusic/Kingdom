@@ -2,21 +2,24 @@
 <h2> 購入商品一覧 </h2>
 <% @total_price = 0 %>
 <% @total_amount = 0 %>
+<% @total_fee = 0 %>
+<% @delivery_fee = 200 %>
 <% current_user.carts.each do |cart| %>
 	<% order_item = OrderItem.find_by(product_id: cart.product_id, order_id: 0)%>
 	<%= cart.product.product_name %>
 	<%= cart.product.artist.name %>
 	<%= order_item.price %>
 	<%= order_item.count %>
-	<% @total_price += order_item.price * order_item.count %>
+	<% @total_fee += order_item.price * order_item.count %>
 	<% @total_amount += order_item.count %>
 <% end %>
 <%= link_to "カートへ戻る", carts_path %>
 
 <p> 商品数: <%= @total_amount %>点 </p>
-<p> 商品の小計: <%= @total_price %>円 </p>
-<p> 送料 </p>
-<p> 商品合計</p>
+<p> 商品の小計: <%= @total_fee %>円 </p>
+<p> 送料: <%= @delivery_fee %>円</p>
+<% @total_price = @total_fee + @delivery_fee %>
+<p> 商品合計: <%= @total_price %>円</p>
 
 <h2> 配送先指定  </h2>
 <%= form_for (@destination) do |f| %>

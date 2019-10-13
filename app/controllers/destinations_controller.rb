@@ -1,4 +1,5 @@
 class DestinationsController < ApplicationController
+before_action :check_user
 
   def update
     destination = Destination.find_by(user_id: current_user)

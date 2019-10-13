@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+before_action :check_user
+
   def index
     @carts = current_user.carts
   end

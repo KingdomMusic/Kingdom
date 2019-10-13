@@ -1,0 +1,31 @@
+<h1> 購入詳細 </h1>
+<p> 購入者: <%= @order.user.full_name(@order.user) %>
+<p> 購入日: </p>
+<% @order.order_items.each do |order_item| %>
+  <%= attachment_image_tag order_item.product, :jacket_image, :fill, 100, 100, :class => 'img-circle', fallback: "no_image.jpg" %>
+  <%= order_item.product.product_name %>
+  <%= order_item.price %>
+  <%= order_item.count %>
+<% end %>
+<p> 購入枚数: <%= @order.total_count %>枚 </p>
+<% @total_fee = 0 %>
+<% @delivery_fee = 200 %>
+<% @total_fee = @order.total_price - @delivery_fee %>
+<p> 商品の小計: <%= @total_fee %>円 </p>
+<p> 送料: <%= @delivery_fee %>円</p>
+<p> 合計金額: <%= @order.total_price %>円 </p>
+<p> お届け先: <%= @order.postal_code %> <%= @order.address %> <%= @order.address_name %> </p>
+<% if @order.option == 0 %>
+<p> 支払い方法: 現金</p>
+<% elsif @order.option == 1 %>
+<p> 支払い方法: クレジットカード</p>
+<% else %>
+<% end %>
+<% if @order.delivery_status == 0 %>
+<p> 発送状況: 配送前</p>
+<% elsif @order.delivery_status == 1 %>
+<p> 発送状況: 配送中</p>
+<% else @order.delivery_status == 2 %>
+<p> 発送状況: 配送済み</p>
+<% end %>
+<%= link_to '購入一覧へ戻る', orders_path %>

@@ -1,0 +1,18 @@
+<h1> 購入履歴 </h1>
+<% @orders.each do |order| %>
+  <p> 購入者: <%= order.user.full_name(order.user) %>
+  <p> 購入日: </p>
+  <p> 購入枚数: <%= order.total_count %>枚 </p>
+  <p> 合計金額: <%= order.total_price %>円 </p>
+  <p> お届け先: <%= order.address_name %> </p>
+  <% if order.delivery_status == 0 %>
+  <p> 発送状況: 配送前</p>
+  <% elsif order.delivery_status == 1 %>
+  <p> 発送状況: 配送中</p>
+  <% else order.delivery_status == 2 %>
+  <p> 発送状況: 配送済み</p>
+  <% end %>
+  <div>
+  <%= link_to "詳細", admin_order_path(order) %>
+  </div>
+<% end %>

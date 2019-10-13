@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only:[:show, :edit]
+before_action :check_user, only:[:show, :edit, :update, :destroy]
 
   def top
   end
@@ -21,8 +21,9 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to "/"
+    redirect_to root_path
   end
+
   private
   def params_user
     params.require(:user).permit(:last_name_characters, :first_name_characters, :last_name_kana,
