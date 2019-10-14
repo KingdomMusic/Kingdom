@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_10_03_072549) do
 
   create_table "arrivals", force: :cascade do |t|
     t.integer "product_id", null: false
-    t.integer "arraival_count", null: false
+    t.integer "arrival_count", null: false
     t.datetime "arrival_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
