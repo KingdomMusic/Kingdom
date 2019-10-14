@@ -18,7 +18,7 @@
 <%= f.collection_select(:product_id, Product.all, :id, :product_name, { :prompt => "選択してください" , :multiple => true } ) %>
 
 <h4>入荷枚数</h4>
-<%= f.number_field :arraival_count %>
+<%= f.number_field :arrival_count %>
 
 <h4>入荷日</h4>
 <%= f.date_field :arrival_date %>

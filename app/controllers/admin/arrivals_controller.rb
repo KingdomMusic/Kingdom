@@ -15,6 +15,6 @@ class Admin::ArrivalsController < ApplicationController
 
   	private
   	def arrival_params
-  		params.require(:arrival).permit(:product_id, :arraival_count, :arrival_date)
+  		params.require(:arrival).permit(:product_id, :arrival_count, :arrival_date)
     end
 end
