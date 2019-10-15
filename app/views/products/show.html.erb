@@ -1,93 +1,100 @@
-<div id="product">
-<h2 class="">商品詳細</h2>
+<div id="product-show">
 
-	<div class="wrapper clearfix">
+	<div class="col-md-5">
+		<h2 class="product-title">商品詳細</h2>
 		<div class="jacket-img-circle">
-		<%= attachment_image_tag @product, :jacket_image, :fill, 80, 80, :class => 'img-circle', fallback: "no_image.jpg" %>
+		<%= attachment_image_tag @product, :jacket_image, :fill, 150, 150, fallback: "no_image.jpg" %>
 		</div>
 
-		<div class="left-contents">
-			<div class="product-artitst-name">
-				アーティスト名：<%= @product.artist.name %>
-			</div>
+		<div class="row">
+			<div class="col-md-12 wrapper-review">
+				<h2>レビュー</h2>
+					<%= link_to "レビューを書く", new_review_path, :class => "btn btn-primary" %>
 
-			<div class="product-name">
-				アルバム名：<%= @product.product_name %>
-			</div>
-
-			<div class="product-price">
-				価格：<%= @product.price %>
-			</div>
-
-			<div class="product-label-name">
-				レーベル名：<%= @product.label.name %>
-			</div>
-
-			<div class="product-genre-name">
-				ジャンル：<%= @product.genre.name %>
-			</div>
-
-			<div class="product-stock">
-
-				在庫数：<%= @stock %>
-			</div>
-
-		 	<% if @cart.id.blank? %>
-		  	<%= form_for [@product, @cart] do |f| %>
-					<%=  f.number_field :count %>
-					<%=  f.submit "カートに入れる" %>
-				<% end %>
-			<% else %>
-				<%= form_for [@product, @cart], url: cart_change_path(@cart), action: "patch" do |f| %>
-					<%=  f.number_field :count %>
-					<%=  f.submit "カートに入れる" %>
-				<% end %>
-			<% end %>
-
-
-			<div class="product-status">
-				ステータス：<%= @product.sell_status %>
-			</div>
-		</div>
-
-		<div class="product-song-name">
-			<% @discs.each do |disc| %>
-				曲名：
-				<% disc.songs.each do |song| %>
-					<div>
-						<%= song.song_order %>
-						 <%= song.name %>
-					</div>
-				<% end %>
-			<% end %>
-		</div>
-
-
-		<div class="right-contents">
-			<h2>レビュー</h2>
-			<%= link_to "レビューを書く", new_review_path %>
-
-				<table>
+				<table class="table table-striped">
 					<tr>
 						<th>画像</th>
 						<th>レビュー</th>
+						<th></th>
 						<th></th>
 					</tr>
 
 					<% @product.reviews.each do |review| %>
 					<tr>
-						<th></th>
-						<th><%= review.review %></th>
+						<th><%= attachment_image_tag review.product, :jacket_image, :fill, 60, 60, :class => 'img-circle', fallback: "no_image.jpg" %></th>
+						<th class="review-text"><%= review.review %></th>
 						<% if review.user_id == current_user.id %>
 						<th><%= link_to "編集", edit_review_path(review) %></th>
 						<th><%= link_to "削除", review_path(review), method: :delete %> </th>
 						<% end %>
 					</tr>
+					<% end %>
 				</table>
-			<% end %>
+			</div>
 		</div>
 	</div>
 
-	<%= link_to "商品一覧へ戻る", products_path %>
+	<div class="col-md-6  col-md-offset-1 wrapper-review">
+		<div class="product-name">
+			シングル/アルバム名：<%= @product.product_name %>
+		</div><br>
 
+		<div class="product-artitst-name">
+			アーティスト名：<%= @product.artist.name %>
+		</div><br>
+
+		<div class="product-price">
+			価格：<%= @product.price %>円(税込)
+		</div><br>
+
+		<div class="product-stock">
+			在庫数：<%= @stock %>
+		</div><br>
+
+		<div class="product-status">
+			ステータス：<%= @product.sell_status %>
+		</div><br>
+
+		<div class="product-label-name">
+			レーベル名：<%= @product.label.name %>
+		</div><br>
+
+		<div class="product-genre-name">
+			ジャンル：<%= @product.genre.name %>
+		</div><br>
+
+	 	<% if @cart.id.blank? %>
+	  	<%= form_for [@product, @cart] do |f| %>
+				<%=  f.number_field :count %>
+				<%=  f.submit "カートに入れる" %>
+			<% end %>
+		<% else %>
+			<%= form_for [@product, @cart], url: cart_change_path(@cart), action: "patch" do |f| %>
+				<%=  f.number_field :count %>
+				<%=  f.submit "カートに入れる" %>
+			<% end %>
+		<% end %>
+
+
+		<div class="product-song-name wrapper-review">
+			<h4 class="">曲一覧</h4>
+			<table class="table table-striped">
+				<tr>
+					<th>曲番号</th>
+					<th>曲名</th>
+				</tr>
+
+				<% @discs.each.with_index(1) do |disc, index| %>
+					<%= (index) %>枚目
+					<% disc.songs.each.with_index(1) do |song,index| %>
+					<tr>
+						<th><%= index %></th>
+						<th><%= song.name %></th>
+					</tr>
+					<% end %>
+				<% end %>
+			</table>
+		</div>
+	</div>
 </div>
+

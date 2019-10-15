@@ -1,3 +1,14 @@
+<% if @label.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @label.errors.count %> error prohibited this user from being saved: </h2>
+      <ul>
+      <% @label.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+     <% end %>
+      </ul>
+    </div>
+<% end %>
+
 <div id="label">
 <h2>ラベル編集画面</h2>
 <%= form_for([:admin, @label]) do |f| %>

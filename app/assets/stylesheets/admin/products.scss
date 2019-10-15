@@ -29,16 +29,6 @@
 	float: left;
 }
 
-.left-contents {
-	width: 55%;
-	float: left;
-	margin-left: 40px;
-}
-
-.right-contents {
-	width: 35%;
-}
-
 .left-index {
 	width: 25%;
 	float:left;
@@ -54,4 +44,28 @@
 	float: right;
 	margin: 30px 0 ;
 }
+
+.product-title {
+	margin: 20px 0  20px 15px;
+}
+
+.btn-primary {
+	marign: 10px 0 20px 0;
+}
+
+.review-text {
+	word-wrap: normal;
+	width: 205px;
+}
+
+.wrapper-review {
+	margin-top: 20px;
+	border: 2px solid #000;
+	padding: 10px;
+}
+
+.product-song-name {
+	padding: 10px;
+}
+
 
