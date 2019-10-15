@@ -1,3 +1,14 @@
+<% if @artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @artist.errors.count %> error prohibited this user from being saved: </h2>
+      <ul>
+      <% @artist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+     <% end %>
+      </ul>
+    </div>
+<% end %>
+
 <div id="artist">
 <h2>アーティスト編集画面</h2>
 <%= form_for([:admin, @artist]) do |f| %>
