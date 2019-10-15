@@ -10,8 +10,12 @@ before_action :check_admin
 
   def update
   	@review = Review.find(params[:id])
-  	@review.update(review_params)
-  	redirect_to product_path(@review.product)
+  	if @review.update(review_params)
+       flash[:notice] = "レビューが作成されました!"
+  	   redirect_to product_path(@review.product)
+    else
+       render "edit"
+    end
   end
 
   def destroy
