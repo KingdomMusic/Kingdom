@@ -1,22 +1,40 @@
 <h1> 受注一覧 </h1>
-<%= link_to "配送完了一覧", admin_orders_done_path %>
-<% @orders.each do |order| %>
-  <p> 購入者: <%= order.user.full_name(order.user) %>
-  <p> 購入日: </p>
-  <p> お届け先: <%= order.address_name %> </p>
-  <p> 購入枚数: <%= order.total_count %>枚 </p>
-  <p> 合計金額: <%= order.total_price %>円 </p>
-  <% if order.delivery_status == 0 %>
-  <p> 発送状況: 配送前</p>
-  <% elsif order.delivery_status == 1 %>
-  <p> 発送状況: 配送中</p>
-  <% else order.delivery_status == 2 %>
-  <p> 発送状況: 配送済み</p>
+
+<%= link_to "配送完了一覧", admin_orders_done_path, :class => "btn btn-primary" %>
+
+<table class="table table-striped">
+  <thead>
+    <th>購入者</th>
+    <th>購入日</th>
+    <th>宛名</th>
+    <th>購入枚数</th>
+    <th>合計金額</th>
+    <th>発送状況</th>
+    <th></th>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <th><%= order.user.full_name(order.user) %></th>
+        <th></th>
+        <th><%= order.address_name %></th>
+        <th><%= order.total_count %>枚</th>
+        <th><%= order.total_price %>円</th>
+        <th><% if order.delivery_status == 0 %>
+                配送前
+            <% elsif order.delivery_status == 1 %>
+              発送状況: 配送中
+            <% else order.delivery_status == 2 %>
+                発送状況: 配送済み
+            <% end %>
+        <%= link_to "配送前", admin_order_path(id: order.id, delivery_status: 0), method: :patch %>
+        <%= link_to "配送中", admin_order_path(id: order.id, delivery_status: 1), method: :patch %>
+        <%= link_to "配送済み", admin_order_path(id: order.id, delivery_status: 2), method: :patch %></th>
+
+        <th><%= link_to "詳細", admin_order_path(order) %></th>
+
+      </tr>
   <% end %>
-<%= link_to "配送前", admin_order_path(id: order.id, delivery_status: 0), method: :patch %>
-<%= link_to "配送中", admin_order_path(id: order.id, delivery_status: 1), method: :patch %>
-<%= link_to "配送済み", admin_order_path(id: order.id, delivery_status: 2), method: :patch %>
-<div>
-<%= link_to "詳細", admin_order_path(order) %>
-</div>
-<% end %>
+  </tbody>
+</table>
