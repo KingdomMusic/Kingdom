@@ -2,6 +2,10 @@
 <div id="product">
 	<h1 class="product-class">商品一覧</h1>
 		<%= link_to "商品入荷", new_admin_arrival_path, class: "btn btn-primary" %>
+		<%= link_to "商品登録", new_admin_product_path, class: "btn btn-primary" %>
+		<%= link_to "アーティスト登録", new_admin_artist_path, class: "btn btn-primary" %>
+		<%= link_to "ジャンル登録", new_admin_genre_path, class: "btn btn-primary" %>
+		<%= link_to "レーベル登録", new_admin_label_path, class: "btn btn-primary" %>
 
 	<div class="wrapper clearfix">
 	<% @products.each do |product| %>

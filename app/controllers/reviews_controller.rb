@@ -3,11 +3,11 @@ before_action :check_user
 
   def new
   	@review = Review.new
-  	@product = Product.find_by(params[:product_id])
+  	@product = Product.find(params[:product_id])
   end
 
   def create
-  	product = Product.find_by(params[:product_id])
+  	product = Product.find(params[:product_id])
   	@review = Review.new(review_params)
   	@review = current_user.review.new(review_params)
   	@review.product_id = product.id

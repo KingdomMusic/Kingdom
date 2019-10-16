@@ -17,7 +17,7 @@
 		<%= f.attachment_field :jacket_image %>
 
 		<h4>アーティスト名</h4>
-		<%= f.collection_select(:artist_id, Artist.all, :id, :name, { :prompt => "選択してください" , :multiple => true } ) %>
+		<%= f.collection_select(:artist_id, Artist.all, :id, :name, { :prompt => "選択してください" , :multiple => true } ) %><%= link_to "アーティスト登録", new_admin_artist_path, class: "btn btn-primary" %>
 
 		<h4>アルバム名(商品名)</h4>
 		<%= f.text_field :product_name %>
@@ -26,10 +26,10 @@
 		<%= f.number_field :price %>
 
 		<h4>レーベル名</h4>
-		<%= f.collection_select(:label_id, Label.all, :id, :name, { :prompt => "選択してください" , :multiple => true }) %>
+		<%= f.collection_select(:label_id, Label.all, :id, :name, { :prompt => "選択してください" , :multiple => true }) %><%= link_to "レーベル登録", new_admin_label_path, class: "btn btn-primary" %>
 
 		<h4>ジャンル名</h4>
-		<%= f.collection_select(:genre_id, Genre.all, :id, :name, { :prompt => "選択してください" , :multiple => true }) %>
+		<%= f.collection_select(:genre_id, Genre.all, :id, :name, { :prompt => "選択してください" , :multiple => true }) %><%= link_to "ジャンル登録", new_admin_genre_path, class: "btn btn-primary" %>
 
 		<h4>シングル/アルバム</h4>
 		<%= f.select :cd_type, [["シングル","シングル"],["アルバム","アルバム"]], :prompt => "選択してください" %>
