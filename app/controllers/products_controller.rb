@@ -14,6 +14,7 @@ before_action :check_user
     if @cart.blank?
       @cart = Cart.new
     end
+    @review = @product.reviews.page(params[:page])
   end
 
 end

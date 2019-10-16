@@ -53,9 +53,15 @@
 			在庫数：<%= @stock %>
 		</div><br>
 
-		<div class="product-status">
-			ステータス：<%= @product.sell_status %>
-		</div><br>
+		<% if @product.product_stock != 0 %>
+			<div class="product-status">
+				ステータス：<%= @product.sell_status %>
+			</div><br>
+		<% else %>
+			<div class="product-status">
+				ステータス：売り切れ
+			</div><br>
+		<% end %>
 
 		<div class="product-label-name">
 			レーベル名：<%= @product.label.name %>
