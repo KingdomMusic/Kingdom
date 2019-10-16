@@ -51,9 +51,15 @@
 			在庫数：<%= @stock %>
 		</div><br>
 
-		<div class="product-status">
-			ステータス：<%= @product.sell_status %>
-		</div><br>
+		<% if @product.product_stock != 0 %>
+			<div class="product-status">
+				ステータス：<%= @product.sell_status %>
+			</div><br>
+		<% else %>
+			<div class="product-status">
+				ステータス：売り切れ
+			</div><br>
+		<% end %>
 
 		<div class="product-label-name">
 			レーベル名：<%= @product.label.name %>
@@ -63,15 +69,17 @@
 			ジャンル：<%= @product.genre.name %>
 		</div><br>
 
-	 	<% if @cart.id.blank? %>
-	  	<%= form_for [@product, @cart] do |f| %>
-				<%=  f.number_field :count %>
-				<%=  f.submit "カートに入れる" %>
-			<% end %>
-		<% else %>
-			<%= form_for [@product, @cart], url: cart_change_path(@cart), action: "patch" do |f| %>
-				<%=  f.number_field :count %>
-				<%=  f.submit "カートに入れる" %>
+		<% if @product.product_stock != 0 %>
+		 	<% if @cart.id.blank? %>
+		  	<%= form_for [@product, @cart] do |f| %>
+					<%=  f.number_field :count %>
+					<%=  f.submit "カートに入れる" %>
+				<% end %>
+			<% else %>
+				<%= form_for [@product, @cart], url: cart_change_path(@cart), action: "patch" do |f| %>
+					<%=  f.number_field :count %>
+					<%=  f.submit "カートに入れる" %>
+				<% end %>
 			<% end %>
 		<% end %>
 
