@@ -41,6 +41,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :address, null: false, default: "" #住所
       t.string :phone_number #電話番号
       t.boolean :leave_status, default: false
+      t.datetime :discarded_at, after: :deleted
 
 
 
@@ -50,6 +51,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
+    add_index :users, :discarded_at
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end

@@ -7,10 +7,16 @@ Rails.application.routes.draw do
   get "/carts" => "carts#index", as:"carts"
   get "/orders/final" => "order_items#final", as:"order_final"
   get 'orders/done' => "orders#done", as:"order_done"
+  get 'users/revive' => 'users#revive_page', as:'revive_page'
+  post 'revive' => "users#revive", as:"revive"
   patch "/carts/:id/change" => "carts#change", as:"cart_change"
   root 'users#top'
-  devise_for :users
-  resources :users, only:[:show, :edit, :update, :destory]
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+  resources :users, only:[:show, :edit, :update, :destroy]
   resources :products, only:[:show, :index] do
     resources :carts, only:[:create, :destroy, :update]
   end
