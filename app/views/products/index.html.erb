@@ -12,16 +12,16 @@
 					<div class="">商品名：<%= product.product_name %></div>
 					<div class="">アーティスト：<%= product.artist.name %></div>
 					<div class="">価格：<%= product.price %></div>
-					<% if product.product_stock != 0 %>
-						<div class="">ステータス：<%= product.sell_status %></div>
+					<% if product.stock != 0 %>
+						<div class="">ステータス：在庫あり</div>
 					<% else %>
 						<div class="">ステータス：売り切れ</div>
 					<% end %>
 					<%# ここでif文を使って売り切れか在庫数を表示する。 %>
-					<% if product.product_stock != 0 %>
-						<div class="">在庫数：<%= product.product_stock %></div>
+					<% if product.stock != 0 %>
+						<div class="">在庫数：<%= product.stock %></div>
 					<% else %>
-						在庫数：売り切れ
+						在庫数：0
 					<% end %>
 			</div>
 

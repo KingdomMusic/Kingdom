@@ -6,10 +6,12 @@
   <%= cart.product.artist.name %>
   <p> 価格:<%= cart.product.price %>円 </p>
   <% @total += cart.product.price.to_i * cart.count %>
+
   <%= form_for [cart.product, cart] do |f| %>
-    <%= f.number_field :count %>
+    <%= f.number_field :count, min: 0, max: cart.product.stock %>
     <%= f.submit "更新" %>
   <% end %>
+
   <div>
   <%= link_to "詳細", product_path(cart.product) %>
   <%= link_to "カートから外す", product_cart_path(product_id: cart.product.id, id: cart.id), method: :delete %>
