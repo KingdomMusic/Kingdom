@@ -2,12 +2,13 @@ class Admin::OrdersController < ApplicationController
 before_action :check_admin
 
     def index
-        @user = User.find(params[:id])
+        @user = User.with_discarded.find(params[:id])
         @orders = @user.orders
     end
 
     def show
         @order = Order.find(params[:id])
+        @user = User.with_discarded.find(@order.user_id)
     end
 
     def update
