@@ -6,7 +6,6 @@
   <%= cart.product.artist.name %>
   <p> 価格:<%= cart.product.price %>円 </p>
   <% @total += cart.product.price.to_i * cart.count %>
-
   <%= form_for [cart.product, cart] do |f| %>
     <%= f.number_field :count, min: 0, max: cart.product.stock %>
     <%= f.submit "更新" %>

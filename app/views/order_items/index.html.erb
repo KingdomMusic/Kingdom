@@ -21,6 +21,16 @@
 <% @total_price = @total_fee + @delivery_fee %>
 <p> 商品合計: <%= @total_price %>円</p>
 
+<% if @destination.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @destination.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h2> 配送先指定  </h2>
 <%= form_for (@destination) do |f| %>
 <p> 宛先: <%= f.text_field :address_name %> </p>
@@ -29,4 +39,3 @@
 <p> 電話番号: <%= f.text_field :phone_number %> </p>
 <%= f.submit "この住所に発送する" %>
 <% end %>
-
