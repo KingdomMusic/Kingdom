@@ -15,8 +15,9 @@
 
   <tbody>
     <% @orders.each do |order| %>
+      <% user = User.with_discarded.find(order.user_id) %>
       <tr>
-        <th><%= order.user.full_name(order.user) %></th>
+        <th><%= user.full_name(user) %></th>
         <th></th>
         <th><%= order.address_name %></th>
         <th><%= order.total_count %>枚</th>
@@ -28,9 +29,11 @@
             <% else order.delivery_status == 2 %>
                 発送状況: 配送済み
             <% end %>
+        <br>
         <%= link_to "配送前", admin_order_path(id: order.id, delivery_status: 0), method: :patch %>
         <%= link_to "配送中", admin_order_path(id: order.id, delivery_status: 1), method: :patch %>
-        <%= link_to "配送済み", admin_order_path(id: order.id, delivery_status: 2), method: :patch %></th>
+        <%= link_to "配送済み", admin_order_path(id: order.id, delivery_status: 2), method: :patch %>
+        </th>
 
         <th><%= link_to "詳細", admin_order_path(order) %></th>
 

@@ -73,3 +73,4 @@ gem "refile-mini_magick"
 
 gem 'kaminari', '~> 0.17.0'
 gem "cocoon"
+gem 'discard', '~> 1.0'

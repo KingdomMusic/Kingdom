@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   else
+    flash[:notice] = "有効なアカウントではありません"
     redirect_to root_path
   end
   end
@@ -34,9 +35,14 @@ class ApplicationController < ActionController::Base
   def check_user
     if user_signed_in?
     else
+      flash[:notice] = "有効なアカウントではありません"
       redirect_to new_user_session_path
     end
   end
 
-
+  def check_logged_in
+    if user_signed_in?
+      redirect_to user_path(current_user)
+    end
+  end
 end

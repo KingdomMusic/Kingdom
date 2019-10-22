@@ -2,15 +2,15 @@ class Admin::UsersController < ApplicationController
 before_action :check_admin
 
     def index
-        @users = User.all
+        @users = User.with_discarded
     end
 
     def show
-        @user = User.find(params[:id])
+        @user = User.with_discarded.find_by(id: params[:id])
     end
 
     def edit
-        @user = User.find(params[:id])
+        @user = User.with_discarded.find_by(id: params[:id])
     end
 
     def destroy
