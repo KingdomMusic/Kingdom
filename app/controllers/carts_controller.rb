@@ -16,14 +16,19 @@ before_action :check_user
   def change
     cart = Cart.find(params[:id])
     cart.count += cart_params[:count].to_i
-    cart.save
-    redirect_to carts_path
+     cart.save
+     redirect_to carts_path
   end
 
   def update
     cart = Cart.find(params[:id])
-    cart.update(cart_params)
-    redirect_to carts_path
+    if cart.product.stock >= cart_params[:count].to_i
+       cart.update(cart_params)
+       redirect_to carts_path
+    else
+        @carts = current_user.carts
+        render "index"
+    end
   end
 
   def destroy
