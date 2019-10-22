@@ -24,7 +24,7 @@ before_action :check_admin
   def show
   	@product = Product.find(params[:id])
   	@discs = Product.find(params[:id]).discs
-    @stock = @product.product_stock
+    @stock = @product.stock
   end
 
   def edit
