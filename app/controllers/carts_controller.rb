@@ -22,7 +22,11 @@ before_action :check_user
 
   def update
     cart = Cart.find(params[:id])
-    if cart.product.stock >= cart_params[:count].to_i
+    if cart_params[:count].to_i == 0
+       cart.destroy
+       flash[:notice] = "カートから外しました"
+       redirect_to carts_path
+    elsif cart.product.stock >= cart_params[:count].to_i
        cart.update(cart_params)
        redirect_to carts_path
     else

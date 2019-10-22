@@ -2,9 +2,12 @@ class DestinationsController < ApplicationController
 before_action :check_user
 
   def update
-    destination = Destination.find_by(user_id: current_user)
-    destination.update(params_destination)
-    redirect_to order_final_path
+    @destination = Destination.find_by(user_id: current_user)
+    if @destination.update(params_destination)
+      redirect_to order_final_path
+    else
+      render "order_items/index"
+    end
   end
 
   private

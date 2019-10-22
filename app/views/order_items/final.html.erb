@@ -24,6 +24,17 @@
 <p> 郵便番号: <%= @destination.postal_code %> </p>
 <p> 住所: <%= @destination.address %> </p>
 <p> 電話番号: <%= @destination.phone_number %> </p>
+
+<% if @order.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div>
 <%= form_for @order do |f| %>
 	<%= hidden_field_tag :destination_address_name, @destination.address_name %>
 	<%= hidden_field_tag :destination_address, @destination.address %>
@@ -39,3 +50,4 @@
 	<%= f.submit "購入確定" %>
 	</div>
 <% end %>
+</div>

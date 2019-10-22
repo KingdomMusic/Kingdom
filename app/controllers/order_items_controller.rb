@@ -18,23 +18,28 @@ before_action :check_user
 
   def create
     carts = current_user.carts
-    carts.each do |cart|
-      order_item = OrderItem.find_by(product_id: cart.product_id, order_id: 0)
-      # cart_order_items = order_items.find_all{|order_item| order_item.product_id == cart.product_id}
-      if order_item.nil? #存在しなかったら
-        order_item = OrderItem.new
-        order_item.product_id = cart.product_id
-        order_item.count = cart.count
-        order_item.price = cart.product.price
-        order_item.order_id = 0
-        order_item.save
-      else  #それ以降の挙動
-        order_item.count = cart.count
-        order_item.price = cart.product.price
-        order_item.save
-      end
+    if carts.blank?
+      flash[:notice] = "カートに中身がありません"
+      redirect_to carts_path
+    else
+        carts.each do |cart|
+          order_item = OrderItem.find_by(product_id: cart.product_id, order_id: 0)
+          # cart_order_items = order_items.find_all{|order_item| order_item.product_id == cart.product_id}
+          if order_item.nil? #存在しなかったら
+            order_item = OrderItem.new
+            order_item.product_id = cart.product_id
+            order_item.count = cart.count
+            order_item.price = cart.product.price
+            order_item.order_id = 0
+            order_item.save
+          else  #それ以降の挙動
+            order_item.count = cart.count
+            order_item.price = cart.product.price
+            order_item.save
+          end
+        end
+      redirect_to order_items_path
     end
-    redirect_to order_items_path
   end
 
   def destroy
