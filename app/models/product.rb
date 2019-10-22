@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   # validates :stock, presence:true
   validates :sell_status, presence:true
 
-  def product_stock
+  def stock
     arrivals_count = 0
     buy = 0
 
@@ -33,16 +33,5 @@ class Product < ApplicationRecord
 
     return arrivals_count - buy
   end
-
-  # controllerに書いても別にいいけど、長くてウザいのでmodelに整理
-  # 入荷数 = 商品.入荷.each do |入荷|
-  #   処理~~~
-  # end
-
-  # 購入数 = 処理~~~
-
-  # @在庫数 = 入荷数 - 購入数
-
-  # ある商品に紐付いた入荷レコード(arrival.id)と購入履歴(cart.count)から在庫数を取得
 
 end
