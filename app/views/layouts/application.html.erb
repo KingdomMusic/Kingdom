@@ -63,6 +63,15 @@
         </div>
     </header>
 
+      <div class="col-md-offset-11 col-md-1">
+        <% if user_signed_in? %>
+        <div class="profile-wrapper">
+          <%= attachment_image_tag current_user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class:"pic_shape" %><br>
+          <div class="profile-wrapper-text"><%= current_user.last_name_characters %><%= current_user.first_name_characters %></div>
+        </div>
+        <% end %>
+      </div>
+
   <div class="container">
       <div class="row">
         <% if flash[:notice] %>

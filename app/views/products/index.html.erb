@@ -15,7 +15,7 @@
 					<% if product.stock != 0 %>
 						<div class="">ステータス：在庫あり</div>
 					<% else %>
-						<div class="">ステータス：売り切れ</div>
+						<div class="">ステータス：<%= product.sell_status %></div>
 					<% end %>
 					<%# ここでif文を使って売り切れか在庫数を表示する。 %>
 					<% if product.stock != 0 %>

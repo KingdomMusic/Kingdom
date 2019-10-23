@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2019_10_03_072549) do
     t.integer "label_id", null: false
     t.integer "genre_id", null: false
     t.string "stock"
-    t.string "sell_status"
+    t.string "sell_status", default: "在庫なし"
     t.string "sold_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

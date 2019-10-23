@@ -9,7 +9,7 @@ before_action :check_admin
 
   def create
   	@product = Product.new(product_params)
-  	if @product.save
+	  if @product.save
   		flash[:notice] = "商品が登録されました"
   		redirect_to new_admin_product_path
   	else

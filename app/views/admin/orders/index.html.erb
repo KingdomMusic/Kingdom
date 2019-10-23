@@ -16,7 +16,7 @@
       <% user = User.with_discarded.find(order.user_id) %>
       <tr>
         <th><%= user.full_name(user) %></th>
-        <th></th>
+        <th><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></th>
         <th><%= order.address_name %></th>
         <th><%= order.total_count %>枚</th>
         <th><%= order.total_price %>円</th>
