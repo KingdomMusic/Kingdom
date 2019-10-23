@@ -42,8 +42,8 @@
 	            <label><%= link_to_add_association "ディスクを追加", f, :discs %></label>
 	
 
-		<h4>販売ステータス</h4>
-		<%= f.select :sell_status, [["在庫あり","在庫あり"],["在庫無し","在庫無し"]], { :prompt => "選択してください" , :multiple => true } %><br><br>
+
+		<%#= f.select :sell_status, [["在庫あり","在庫あり"],["在庫無し","在庫無し"]], { :prompt => "選択してください" , :multiple => true } %><br><br>
 
 		<%= f.submit "登録", class: "btn btn-primary" %>
 
@@ -51,3 +51,4 @@
 
 	<%= link_to "商品一覧へ戻る", admin_products_path, class: "btn btn-primary" %>
 </div>
+

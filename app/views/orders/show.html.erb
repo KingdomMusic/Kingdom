@@ -6,8 +6,8 @@
 <table class="table table-striped">
 	<thead>
 		<th>購入者: <%= @order.user.full_name(@order.user) %></th>
-		<th>購入日: </th>
-		<th></th>
+		<th>購入日: <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></th>
+		<th>購入枚数: <%= @order.total_count %>枚</th>
 		<th>発送状況：
 			<% if @order.delivery_status == 0 %>
 				配送前
@@ -40,8 +40,8 @@
 	</tbody>
 
 	<tfoot>
-		<th>購入枚数: <%= @order.total_count %>枚</th>
-		<th>商品の小計: <%= @total_fee %>円<br>送料: <%= @delivery_fee %>円</th>
+		<th>商品の小計: <%= @total_fee %>円</th>
+		<th>送料: <%= @delivery_fee %>円</th>
 		<th>合計金額: <%= @order.total_price %>円</th>
 		<th><% if @order.option == 0 %>
 				支払い方法: 現金
