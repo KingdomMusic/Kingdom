@@ -34,4 +34,12 @@ class Product < ApplicationRecord
     return arrivals_count - buy
   end
 
+  def self.search(search)
+    if search
+       where(['product_name LIKE ?', "%#{search}%"])
+    else
+       all
+    end
+ end
+
 end
