@@ -10,8 +10,8 @@
 <table class="table table-striped">
 	<thead>
 		<th>購入者: <%= @user.full_name(@user) %></th>
-		<th>購入日:</th>
-		<th></th>
+		<th>購入日: <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></th>
+		<th>購入枚数: <%= @order.total_count %>枚</th>
 		<th>お届け先: <%= @order.postal_code %> <%= @order.address %></th>
 		<th>宛名：<%= @order.address_name %></th>
 	</thead>
@@ -35,8 +35,8 @@
 		<% end %>
 	</tbody>
 	<tfoot>
-		<th>購入枚数: <%= @order.total_count %>枚</th>
-		<th>商品の小計: <%= @total_fee %>円<br>送料: <%= @delivery_fee %>円</th>
+		<th>商品の小計: <%= @total_fee %>円</th>
+		<th>送料: <%= @delivery_fee %>円</th>
 		<th>合計金額: <%= @order.total_price %>円</th>
 		<th><% if @order.option == 0 %>
 				支払い方法: 現金

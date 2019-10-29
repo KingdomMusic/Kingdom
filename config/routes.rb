@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :users, only:[:show, :edit, :update, :destroy]
   resources :products, only:[:show, :index] do
     resources :carts, only:[:create, :destroy, :update]
+    collection{ get "search" }
   end
   resources :order_items, only:[:index, :create]
   resources :destinations, only:[:create, :update]

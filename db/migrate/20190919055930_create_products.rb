@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :label_id, foreign_key: true, :null => false
       t.integer :genre_id, foreign_key: true, :null => false
       t.string :stock, :null => false
-      t.string :sell_status, :null => false
+      t.string :sell_status, :default => "在庫なし"
       t.datetime :sold_at, :null => false
 
       t.timestamps
