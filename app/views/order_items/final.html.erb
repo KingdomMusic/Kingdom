@@ -3,7 +3,7 @@
 <% @total_price = 0 %>
 <% @total_count = 0 %>
 <% @total_fee = 0 %>
-<% @delivery_fee = 200 %>
+<% @delivery_fee = 500 %>
 <% current_user.carts.each do |cart| %>
 	<% order_item = OrderItem.find_by(product_id: cart.product_id, order_id: 0)%>
 	<%= cart.product.product_name %>
