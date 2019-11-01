@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
 before_action :check_admin
-  
+
   def new
   	@product = Product.new
   	@disc = @product.discs.build
@@ -11,7 +11,7 @@ before_action :check_admin
   	@product = Product.new(product_params)
 	  if @product.save
   		flash[:notice] = "商品が登録されました"
-  		redirect_to new_admin_product_path
+  		redirect_to admin_products_path
   	else
   		render "new"
   	end
