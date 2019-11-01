@@ -15,6 +15,5 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.timestamps
     end
     add_index :products, :product_name
-    add_index :products, :artist
   end
 end
