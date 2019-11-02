@@ -3,6 +3,12 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all.order(created_at: :desc)
     @products = Product.page(params[:page]).per(10)
+    @products.each do |product|
+      if product.stock == 0
+        product.sell_status = "在庫なし"
+        product.save
+      end
+    end
   end
 
   def show

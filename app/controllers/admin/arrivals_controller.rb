@@ -1,6 +1,6 @@
 class Admin::ArrivalsController < ApplicationController
 before_action :check_admin
-  
+
   def new
   	@arrival = Arrival.new
   end
@@ -9,6 +9,9 @@ before_action :check_admin
   	@arrival = Arrival.new(arrival_params)
   	if @arrival.save
   		flash[:notice] = "入荷情報が登録されました"
+      @product = Product.find(arrival_params[:product_id])
+      @product.sell_status = "在庫あり"
+      @product.save
   		redirect_to admin_products_path
   	else
   		render "new"

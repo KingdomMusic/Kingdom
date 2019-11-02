@@ -19,6 +19,12 @@ before_action :check_admin
 
   def index
   	@products = Product.all
+    @products.each do |product|
+      if product.stock == 0
+        product.sell_status = "在庫なし"
+        product.save
+      end
+    end
   end
 
   def show
