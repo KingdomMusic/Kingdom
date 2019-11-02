@@ -23,7 +23,7 @@
 		<%= f.text_field :product_name %>
 
 		<h4>価格(数字のみ入力)</h4>
-		<%= f.number_field :price %>
+		<%= f.number_field :price, min:0 %>
 
 		<h4>レーベル名</h4>
 		<%= f.collection_select(:label_id, Label.all, :id, :name, { :prompt => "選択してください" , :multiple => true }) %><%= link_to "レーベル登録", new_admin_label_path, class: "btn btn-primary" %>
@@ -40,7 +40,7 @@
 		            <%= render "disc_fields", f: f %>
 		        <% end %>
 	            <label><%= link_to_add_association "ディスクを追加", f, :discs %></label>
-	
+
 
 
 		<%#= f.select :sell_status, [["在庫あり","在庫あり"],["在庫無し","在庫無し"]], { :prompt => "選択してください" , :multiple => true } %><br><br>
@@ -51,4 +51,3 @@
 
 	<%= link_to "商品一覧へ戻る", admin_products_path, class: "btn btn-primary" %>
 </div>
-

@@ -54,7 +54,7 @@
 			在庫数：<%= @stock %>
 		</div><br>
 
-		<% if @product.stock != 0 %>
+		<% if @product.stock > 0 %>
 			<div class="product-status">
 				ステータス：在庫あり
 			</div><br>

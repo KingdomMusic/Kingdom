@@ -11,6 +11,12 @@ class User < ApplicationRecord
   has_many :review, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+  validates :last_name_characters, presence: true
+  validates :first_name_characters, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :email, presence: true
+
   attachment :profile_image
 
   def full_name(user)

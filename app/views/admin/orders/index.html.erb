@@ -21,7 +21,7 @@
         <th><%= order.total_count %>枚</th>
         <th><%= order.total_price %>円</th>
         <th><% if order.delivery_status == 0 %>
-                配送前
+                発送状況: 配送前
             <% elsif order.delivery_status == 1 %>
               発送状況: 配送中
             <% else order.delivery_status == 2 %>

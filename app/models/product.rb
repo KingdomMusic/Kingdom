@@ -15,7 +15,7 @@ class Product < ApplicationRecord
 
   validates :product_name, presence:true
   validates :cd_type, presence:true
-  validates :price, presence:true
+  validates :price, presence:true, numericality: {greater_than: 0}
   # validates :stock, presence:true
   validates :sell_status, presence:true
 
