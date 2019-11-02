@@ -15,7 +15,8 @@ before_action :check_admin
 
     def destroy
       user = User.find(params[:id])
-      user.destroy
+      user.discard
+      flash[:notice] = "退会しました"
       redirect_to admin_users_path
     end
 end
