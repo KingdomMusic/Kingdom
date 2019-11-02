@@ -17,3 +17,5 @@
 	<%= f.text_area :review, rows:'5', class: "form-control", placeholder: "コメントここに" %>
 	<%= f.submit "投稿" %>
 <% end %>
+
+<%= link_to "商品へ戻る", product_path(@product), :class => "btn btn-primary" %>

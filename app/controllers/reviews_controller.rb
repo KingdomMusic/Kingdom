@@ -7,10 +7,10 @@ before_action :check_user
   end
 
   def create
-  	product = Product.find(params[:product_id])
+  	@product = Product.find(params[:product_id])
   	@review = Review.new(review_params)
   	@review = current_user.review.new(review_params)
-  	@review.product_id = product.id
+  	@review.product_id = @product.id
   	if @review.save
        flash[:notice] = "レビューが作成されました!"
   	   redirect_to product_path(product)
