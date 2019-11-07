@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  include Discard::Model
+  default_scope -> { kept }
   has_many :arrivals, dependent: :destroy
   has_many :discs, dependent: :destroy
   accepts_nested_attributes_for :discs, allow_destroy: true
