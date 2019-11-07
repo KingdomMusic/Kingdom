@@ -48,8 +48,8 @@ before_action :check_admin
   end
 
   def destroy
-  	@product = Product.find(params[:id])
-  	@product.destroy
+  	product = Product.find(params[:id])
+	product.discard
   	redirect_to admin_products_path
   end
 

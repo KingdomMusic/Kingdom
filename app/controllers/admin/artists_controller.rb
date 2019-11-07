@@ -34,8 +34,8 @@ before_action :check_admin
   end
 
   def destroy
-  	@artist = Artist.find(params[:id])
-  	@artist.destroy
+  	artist = Artist.find(params[:id])
+	artist.discard
   	redirect_to admin_artists_path
   end
 

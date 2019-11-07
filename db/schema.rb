@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 2019_10_03_072549) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_artists_on_discarded_at"
     t.index ["name"], name: "index_artists_on_name"
   end
 
@@ -74,15 +76,19 @@ ActiveRecord::Schema.define(version: 2019_10_03_072549) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_genres_on_discarded_at"
     t.index ["name"], name: "index_genres_on_name"
   end
 
   create_table "labels", force: :cascade do |t|
     t.string "name"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_labels_on_discarded_at"
     t.index ["name"], name: "index_labels_on_name"
   end
 
@@ -120,9 +126,11 @@ ActiveRecord::Schema.define(version: 2019_10_03_072549) do
     t.string "stock"
     t.string "sell_status", default: "在庫なし"
     t.string "sold_at"
+    t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_products_on_artist_id"
+    t.index ["discarded_at"], name: "index_products_on_discarded_at"
     t.index ["product_name"], name: "index_products_on_product_name"
   end
 

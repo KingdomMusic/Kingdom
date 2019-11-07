@@ -34,8 +34,8 @@ before_action :check_admin
   end
 
   def destroy
-  	@label = Label.find(params[:id])
-  	@label.destroy
+  	label = Label.find(params[:id])
+    label.discard
   	redirect_to admin_labels_path
   end
 
