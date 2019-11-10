@@ -1,6 +1,6 @@
 class Admin::LabelsController < ApplicationController
 before_action :check_admin
-  
+
   def index
   	@labels = Label.all
   end
@@ -12,7 +12,7 @@ before_action :check_admin
   def create
   	@label = Label.new(label_params)
   	if @label.save
-      flash[:notice] = "ラベルが追加されました"
+      flash[:notice] = "レーベルが追加されました"
   	   redirect_to admin_labels_path
     else
       render "new"
@@ -26,7 +26,7 @@ before_action :check_admin
   def update
   	@label = Label.find(params[:id])
   	if  @label.update(label_params)
-        flash[:notice] = "ラベルが更新されました"
+        flash[:notice] = "レーベルが更新されました"
   	    redirect_to admin_labels_path
     else
         render "edit"
