@@ -10,10 +10,10 @@
 <% end %>
 
 <div id="label">
-<h2>ラベル登録画面</h2>
+<h2>レーベル登録画面</h2>
 <%= form_for([:admin, @label]) do |f| %>
-<h4>ラベル名</h4>
-<%= f.text_field :name, class: "form-control", placeholder: "ラベル名を入力" %><br>
+<h4>レーベル名</h4>
+<%= f.text_field :name, class: "form-control", placeholder: "レーベル名を入力" %><br>
 <%= f.submit "投稿", class: "form-create" %>
 <% end %>
 </div>

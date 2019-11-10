@@ -43,8 +43,9 @@
 	<%= hidden_field_tag :total_price, @total_price %>
 	<%= hidden_field_tag :total_count, @total_count %>
 	<h2> 支払い方法 </h2>
-	<label><%= f.radio_button :option, 0 %> 現金 </label>
+	<label><%= f.radio_button :option, 0 %> 銀行振込 </label>
 	<label><%= f.radio_button :option, 1 %> クレジットカード</label>
+	<label><%= f.radio_button :option, 2 %> 代引き</label>
   <div>
 	<%= link_to "訂正", order_items_path %>
 	<%= f.submit "購入確定" %>
