@@ -11,9 +11,11 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :stock, :null => false
       t.string :sell_status, :default => "在庫なし"
       t.datetime :sold_at, :null => false
+      t.datetime :discarded_at, after: :deleted
 
       t.timestamps
     end
     add_index :products, :product_name
+    add_index :products, :discarded_at
   end
 end
