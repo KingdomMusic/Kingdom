@@ -9,7 +9,8 @@
 
 <table class="table table-striped">
 	<thead>
-		<th>購入者: <%= @order.user.full_name(@order.user) %><br>宛名: <%= @order.address_name %></th>
+		<% user = User.with_discarded.find(@order.user_id) %>
+		<th>購入者: <%= link_to user.full_name(user), admin_user_path(user)%><br>宛名: <%= @order.address_name %></th>
 		<th>購入日: <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></th>
 		<th>郵便番号: <%= @order.postal_code %></th>
 		<th>住所: <%= @order.address %></th>
