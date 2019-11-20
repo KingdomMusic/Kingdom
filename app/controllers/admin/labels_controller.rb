@@ -35,6 +35,9 @@ before_action :check_admin
 
   def destroy
   	label = Label.find(params[:id])
+    label.products.each do |product|
+      product.discard
+    end
     label.discard
   	redirect_to admin_labels_path
   end
