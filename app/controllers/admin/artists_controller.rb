@@ -1,6 +1,6 @@
 class Admin::ArtistsController < ApplicationController
 before_action :check_admin
-  
+
   def index
   	@artists = Artist.all
   end
@@ -35,7 +35,10 @@ before_action :check_admin
 
   def destroy
   	artist = Artist.find(params[:id])
-	artist.discard
+    artist.products.each do |product|
+      product.discard
+    end
+	  artist.discard
   	redirect_to admin_artists_path
   end
 

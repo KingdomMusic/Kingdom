@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
 before_action :check_admin
-  
+
   def index
   	@genres = Genre.all
   end
@@ -35,6 +35,9 @@ before_action :check_admin
 
   def destroy
   	genre = Genre.find(params[:id])
+    genre.products.each do |product|
+      product.discard
+    end
     genre.discard
   	redirect_to admin_genres_path
   end
