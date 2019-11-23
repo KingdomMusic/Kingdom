@@ -18,7 +18,7 @@ before_action :check_admin
   end
 
   def index
-  	@products = Product.all
+  	@products = Product.with_discarded
     @products.each do |product|
       if product.stock == 0
         product.sell_status = "在庫なし"
@@ -28,8 +28,8 @@ before_action :check_admin
   end
 
   def show
-  	@product = Product.find(params[:id])
-  	@discs = Product.find(params[:id]).discs
+  	@product = Product.with_discarded.find(params[:id])
+  	@discs = Product.with_discarded.find(params[:id]).discs
     @stock = @product.stock
   end
 
@@ -49,7 +49,7 @@ before_action :check_admin
 
   def destroy
   	product = Product.find(params[:id])
-	product.discard
+	  product.discard
   	redirect_to admin_products_path
   end
 

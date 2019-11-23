@@ -2,7 +2,7 @@ class Admin::LabelsController < ApplicationController
 before_action :check_admin
 
   def index
-  	@labels = Label.all
+  	@labels = Label.with_discarded
   end
 
   def new

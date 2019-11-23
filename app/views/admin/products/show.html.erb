@@ -41,8 +41,9 @@
 			シングル/アルバム名：<%= @product.product_name %>
 		</div><br>
 
+		<% artist = Artist.with_discarded.find(@product.artist_id) %>
 		<div class="product-artitst-name">
-			アーティスト名：<%= @product.artist.name %>
+			アーティスト名：<%= artist.name %>
 		</div><br>
 
 		<div class="product-price">
@@ -57,12 +58,14 @@
 			ステータス：<%= @product.sell_status %>
 		</div><br>
 
+		<% label = Label.with_discarded.find(@product.label_id) %>
 		<div class="product-label-name">
-			レーベル名：<%= @product.label.name %>
+			レーベル名：<%= label.name %>
 		</div><br>
 
+		<% genre = Genre.with_discarded.find(@product.genre_id) %>
 		<div class="product-genre-name">
-			ジャンル：<%= @product.genre.name %>
+			ジャンル：<%= genre.name %>
 		</div><br>
 
 		<div class="product-song-name wrapper-review">
@@ -85,4 +88,7 @@
 			</table>
 		</div>
 	</div>
+	<% if @product.discarded_at.nil? %>
+	 <%= link_to "削除", admin_product_path(product), method: :delete, class: "btn btn-danger" %>
+	<% end %>
 </div>

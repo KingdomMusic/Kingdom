@@ -79,7 +79,11 @@
 
             <div class="actions label2">
                 <%= link_to "ユーザー一覧へ戻る", admin_users_path, class:"btn btn-primary btn-next" %>
-                <%= f.submit "更新",class:"btn btn-primary btn-next" %>
+                <% if @user.discarded_at.nil? %>
+                 <%= f.submit "更新",class:"btn btn-primary btn-next" %>
+                <% else %>
+                 退会済み
+                <% end %>
             </div>
 
             <% end %>

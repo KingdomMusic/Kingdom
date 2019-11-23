@@ -2,7 +2,7 @@ class Admin::ArtistsController < ApplicationController
 before_action :check_admin
 
   def index
-  	@artists = Artist.all
+  	@artists = Artist.with_discarded
   end
 
   def new

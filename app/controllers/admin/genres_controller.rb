@@ -2,7 +2,7 @@ class Admin::GenresController < ApplicationController
 before_action :check_admin
 
   def index
-  	@genres = Genre.all
+  	@genres = Genre.with_discarded
   end
 
   def new
