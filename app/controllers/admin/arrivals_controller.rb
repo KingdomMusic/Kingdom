@@ -18,6 +18,10 @@ before_action :check_admin
   	end
   end
 
+  def index
+	@arrivals = Arrival.all
+  end
+
   	private
   	def arrival_params
   		params.require(:arrival).permit(:product_id, :arrival_count, :arrival_date)

@@ -38,6 +38,9 @@
                 <%= link_to "受注一覧", admin_orders_receive_path, style:"color:white;" %>
               </li>
               <li class="nav-item">
+                <%= link_to "入荷履歴", admin_arrivals_path, style:"color:white;" %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, style:"color:white;" %>
               </li>
               <% elsif user_signed_in? %>
