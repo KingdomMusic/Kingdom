@@ -112,9 +112,19 @@
   text-align: center;
 }
 
-.footer {
+// footer
+
+.fix{
+  margin-bottom: 100px;
+}
+#whole{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
   background-color: black;
-  margin-top: 200px;
+  margin-top: auto;
 }
 
 .footer-text {
