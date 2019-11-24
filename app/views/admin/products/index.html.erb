@@ -28,7 +28,7 @@
 					<%= link_to "詳細", admin_product_path(product), class: "btn btn-primary" %>
 					<%= link_to "商品入荷", new_admin_arrival_path, class: "btn btn-primary" %>
 					<%= link_to "編集", edit_admin_product_path(product), class: "btn btn-primary" %>
-					<%= link_to "削除", admin_product_path(product), method: :delete, class: "btn btn-danger" %>
+					<%= link_to "削除", admin_product_path(product), method: :delete,  "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-next" %>
 				</div>
 			<% else %>
 			  <% artist = Artist.with_discarded.find(product.artist_id) %>
@@ -42,7 +42,7 @@
 
 				<div class="right-index">
 					<%= link_to "詳細", admin_product_path(product), class: "btn btn-primary" %>
-				</div>	
+				</div>
 		  <% end %>
 		</div>
 	<% end %>
