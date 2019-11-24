@@ -27,6 +27,7 @@
 				<div class="right-index">
 					<%= link_to "詳細", admin_product_path(product), class: "btn btn-primary" %>
 					<%= link_to "商品入荷", new_admin_arrival_path, class: "btn btn-primary" %>
+					<%= link_to "編集", edit_admin_product_path(product), class: "btn btn-primary" %>
 					<%= link_to "削除", admin_product_path(product), method: :delete, class: "btn btn-danger" %>
 				</div>
 			<% else %>

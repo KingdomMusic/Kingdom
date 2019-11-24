@@ -70,24 +70,24 @@
 
 		<div class="product-song-name wrapper-review">
 			<h4 class="">曲一覧</h4>
+			<% @discs.each.with_index(1) do |disc, index| %>
+					<%= (index) %>枚目
 			<table class="table table-striped">
 				<tr>
 					<th>曲番号</th>
 					<th>曲名</th>
 				</tr>
-
-				<% @discs.each.with_index(1) do |disc, index| %>
-					<%= (index) %>枚目
-					<% disc.songs.each.with_index(1) do |song,index| %>
+				<% disc.songs.each.with_index(1) do |song,index| %>
 					<tr>
 						<th><%= index %></th>
 						<th><%= song.name %></th>
 					</tr>
 					<% end %>
-				<% end %>
 			</table>
+			<% end %>
 		</div>
 	</div>
+	<%= link_to "編集", edit_admin_product_path(@product), class: "btn btn-primary" %>
 	<% if @product.discarded_at.nil? %>
 	 <%= link_to "削除", admin_product_path(@product), method: :delete, class: "btn btn-danger" %>
 	<% end %>
