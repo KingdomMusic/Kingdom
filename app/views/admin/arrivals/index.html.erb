@@ -8,14 +8,13 @@
         </tr>
     </thead>
     <% @arrivals.each do |arrival| %>
+    <% product = Product.with_discarded.find(arrival.product_id) %>
     <tbody>
         <tr>
             <th><%= arrival.arrival_date.strftime('%Y年%m月%d日') %></th>
-            <th><%= arrival.product.product_name %></th>
+            <th><%= product.product_name %></th>
             <th><%= arrival.arrival_count %></th>
         </tr>
     </tbody>
     <% end %>
 </table>
-    
-
